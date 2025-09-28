@@ -1,10 +1,19 @@
-// import { Task } from "../types";
+import { Task, TaskStatus } from "../types";
 
-// interface TaskColumnProps {
-//   category: string;
-//   task: Task;
-// }
+interface TaskColumnProps {
+  task: Task;
+}
 
-// export function TaskCard({ category, task }: TaskColumnProps) {
-//   return;
-// }
+export function TaskCard({ task }: TaskColumnProps) {
+  const { title, description, status } = task;
+
+  return (
+    <div className="flex flex-col">
+      <div className="flex justify-between">
+        <h3>{title}</h3>
+        <p>{status}</p>
+      </div>
+      <p>{description}</p>
+    </div>
+  );
+}

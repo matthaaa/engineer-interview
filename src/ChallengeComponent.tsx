@@ -1,8 +1,8 @@
 import { TaskColumn } from "./components/TaskColumn";
-import { TodoStatus, TodoStatusArray, Task } from "./types";
+import { Task, TaskStatus, TaskStatusArray } from "./types";
 
-const COLUMN_IDS: TodoStatusArray = ["todo", "inProgress", "done"];
-const COLUMN_LABELS: Record<TodoStatus, string> = {
+const COLUMN_IDS: TaskStatusArray = ["todo", "inProgress", "done"];
+const COLUMN_LABELS: Record<TaskStatus, string> = {
   todo: "To Do",
   inProgress: "In Progress",
   done: "Done",
@@ -11,10 +11,11 @@ const COLUMN_LABELS: Record<TodoStatus, string> = {
 export function ChallengeComponent() {
   return (
     <div className="flex justify-evenly m-4 border-1">
-      {COLUMN_IDS.map((column_id) => (
+      {COLUMN_IDS.map((columnId) => (
         <TaskColumn
-          key={column_id}
-          title={COLUMN_LABELS[column_id]}
+          key={columnId}
+          columnStatus={columnId}
+          title={COLUMN_LABELS[columnId]}
           tasks={[]}
         />
       ))}
@@ -26,11 +27,24 @@ export function ChallengeComponent() {
 // Categories: iterate and render on field
 // TaskCards: iterate on Categories
 // TaskCard update
+
 // const testTasks = [
 //   {
 //     id: "1",
 //     title: "Do laundry",
 //     description: "Don't forget to run the dryer this time",
 //     status: "todo",
+//   },
+//   {
+//     id: "2",
+//     title: "Do dishes",
+//     description: "Handwash the skillet",
+//     status: "inProgress",
+//   },
+//   {
+//     id: "3",
+//     title: "Nap",
+//     description: "Need I say more?",
+//     status: "done",
 //   },
 // ] as Task[];
