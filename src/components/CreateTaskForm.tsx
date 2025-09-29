@@ -16,8 +16,9 @@ export function CreateTaskForm({ onCreate }: CreateTaskFormProps) {
       description: description.trim(),
       status: "todo",
     });
+
     // Note: if this were to be handled by an HTTP request, we would only reset the
-    // inputs onSuccess.
+    // inputs after onSuccess.
     setTitle("");
     setDescription("");
   };

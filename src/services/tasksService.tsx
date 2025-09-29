@@ -1,7 +1,7 @@
 import { Task } from "@/types";
 
 export const getTasks = () => {
-  // TODO: add connection to "api" here
+  // TODO: add connection to "api" here if necessary
   return [
     {
       id: "1",
@@ -18,7 +18,7 @@ export const getTasks = () => {
     {
       id: "3",
       title: "Nap",
-      description: "Need I say more?",
+      description: "Try to keep it under 3 hours",
       status: "done",
     },
   ] as Task[];
