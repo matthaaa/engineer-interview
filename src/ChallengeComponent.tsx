@@ -1,16 +1,10 @@
 import { useState } from "react";
 import { TaskColumn } from "./components/TaskColumn";
-import { Task, TaskStatus, TaskStatusArray } from "./types";
+import { Task, TaskStatus } from "./types";
 import { getTasks } from "./services/tasksService";
 import { filterByStatus } from "./helpers/tasks";
 import { CreateTaskForm } from "./components/CreateTaskForm";
-
-const TASK_STATUS_IDS: TaskStatusArray = ["todo", "inProgress", "done"];
-const COLUMN_LABELS: Record<TaskStatus, string> = {
-  todo: "To Do",
-  inProgress: "In Progress",
-  done: "Done",
-};
+import { COLUMN_LABELS, TASK_STATUS_IDS } from "./utils/constants";
 
 export function ChallengeComponent() {
   const mockTasks = getTasks();
@@ -54,8 +48,3 @@ export function ChallengeComponent() {
     </div>
   );
 }
-
-// TODO:
-// Categories: iterate and render on field
-// TaskCards: iterate on Categories
-// TaskCard update

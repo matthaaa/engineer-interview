@@ -9,14 +9,13 @@ interface TaskColumnProps {
 
 export function TaskColumn({ title, tasks, moveTask }: TaskColumnProps) {
   return (
-    <div className="p-4 border rounded-md">
-      <h2 className="font-semibold mb-2">{title}</h2>
-      <ul className="space-y-2">
+    <div className="flex-1 p-4 border rounded-md shadow-md min-w-[250px] max-w-[300px] flex flex-col">
+      <h2 className="font-semibold mb-2 text-center border-b pb-4 mb-4">
+        {title}
+      </h2>
+      <ul className="flex-1 overflow-y-auto space-y-2">
         {tasks.map((task) => (
-          <li
-            key={task.id}
-            className="flex justify-between items-center p-2 bg-gray-100 rounded"
-          >
+          <li key={task.id}>
             <TaskCard
               task={task}
               onMovePrevious={(id) => moveTask(id, "previous")}
