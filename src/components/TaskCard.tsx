@@ -13,7 +13,6 @@ export function TaskCard({ task, onMovePrevious, onMoveNext }: TaskCardProps) {
   const statusOrder: TaskStatus[] = ["todo", "inProgress", "done"];
   const currentIndex = statusOrder.indexOf(status);
 
-  // Map status to background colors
   const statusColors: Record<TaskStatus, string> = {
     todo: "bg-blue-100",
     inProgress: "bg-yellow-100",
@@ -31,14 +30,14 @@ export function TaskCard({ task, onMovePrevious, onMoveNext }: TaskCardProps) {
       <p className="mb-2">{description}</p>
       <div className="flex justify-end gap-2">
         <button
-          className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:bg-gray-100 disabled:text-gray-400"
+          className="px-2 py-1 bg-gray-200 rounded disabled:bg-gray-100 disabled:text-gray-400 hover:bg-gray-300 disabled:hover:bg-gray-100 disabled:cursor-not-allowed"
           onClick={() => onMovePrevious?.(id)}
           disabled={currentIndex === 0}
         >
           Previous
         </button>
         <button
-          className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:bg-gray-100 disabled:text-gray-400"
+          className="px-2 py-1 bg-gray-200 rounded disabled:bg-gray-100 disabled:text-gray-400 hover:bg-gray-300 disabled:hover:bg-gray-100 disabled:cursor-not-allowed"
           onClick={() => onMoveNext?.(id)}
           disabled={currentIndex === statusOrder.length - 1}
         >

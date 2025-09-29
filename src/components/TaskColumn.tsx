@@ -1,4 +1,4 @@
-import { Task, TaskStatus } from "../types";
+import { Task } from "../types";
 import { TaskCard } from "./TaskCard";
 
 interface TaskColumnProps {
