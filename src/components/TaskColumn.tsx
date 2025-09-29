@@ -1,6 +1,5 @@
 import { Task, TaskStatus } from "../types";
 import { TaskCard } from "./TaskCard";
-import { filterByStatus } from "../helpers/tasks";
 
 interface TaskColumnProps {
   title: string;
