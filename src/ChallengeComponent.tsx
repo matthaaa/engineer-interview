@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TaskColumn } from "./components/TaskColumn";
-import { TaskStatus, TaskStatusArray } from "./types";
+import { Task, TaskStatus, TaskStatusArray } from "./types";
 import { getTasks } from "./services/tasksService";
 import { filterByStatus } from "./helpers/tasks";
 import { CreateTaskForm } from "./components/CreateTaskForm";
@@ -16,6 +16,24 @@ export function ChallengeComponent() {
   const mockTasks = getTasks();
   const [tasks, setTasks] = useState(mockTasks);
 
+  const moveTask = (id: string, direction: "previous" | "next") => {
+    setTasks((prev: Task[]) =>
+      prev.map((task) => {
+        if (task.id !== id) return task;
+
+        const order: TaskStatus[] = ["todo", "inProgress", "done"];
+        let taskStatusIndex = order.indexOf(task.status);
+
+        if (direction === "previous")
+          taskStatusIndex = Math.max(0, taskStatusIndex - 1);
+        if (direction === "next")
+          taskStatusIndex = Math.min(order.length - 1, taskStatusIndex + 1);
+
+        return { ...task, status: order[taskStatusIndex] };
+      })
+    );
+  };
+
   return (
     <div className="flex justify-evenly m-4 border-1">
       <div>
@@ -30,6 +48,7 @@ export function ChallengeComponent() {
           key={taskStatusId}
           title={COLUMN_LABELS[taskStatusId]}
           tasks={filterByStatus(tasks, taskStatusId)}
+          moveTask={moveTask}
         />
       ))}
     </div>
