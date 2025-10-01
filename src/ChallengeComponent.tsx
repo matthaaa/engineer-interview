@@ -11,7 +11,7 @@ export function ChallengeComponent() {
 
   useEffect(() => {
     (async () => {
-      // Currently fetching a seed list of tasks if the task list is empty for demo purposes.
+      // Seed a list of tasks if the task list is empty for demo purposes.
       let allTasks = await taskService.fetchAll();
       if (allTasks.length === 0) {
         allTasks = await taskService.seed();
