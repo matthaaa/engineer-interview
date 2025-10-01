@@ -5,9 +5,15 @@ interface TaskColumnProps {
   title: string;
   tasks: Task[];
   moveTask: (id: string, direction: "previous" | "next") => void;
+  onDelete: (id: string) => void;
 }
 
-export function TaskColumn({ title, tasks, moveTask }: TaskColumnProps) {
+export function TaskColumn({
+  title,
+  tasks,
+  moveTask,
+  onDelete,
+}: TaskColumnProps) {
   return (
     <div className="flex-1 p-4 border rounded-md shadow-md min-w-[250px] max-w-[300px] flex flex-col">
       <h2 className="font-semibold mb-2 text-center border-b pb-4 mb-4">
@@ -20,6 +26,7 @@ export function TaskColumn({ title, tasks, moveTask }: TaskColumnProps) {
               task={task}
               onMovePrevious={(id) => moveTask(id, "previous")}
               onMoveNext={(id) => moveTask(id, "next")}
+              onDelete={onDelete}
             />
           </li>
         ))}
